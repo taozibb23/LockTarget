@@ -1,0 +1,2 @@
+﻿  tzproject.cpp
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tzproject.cpp(1,10): error C1083: 无法打开包括文件: “opencv2/opencv.hpp”: No such file or directory
