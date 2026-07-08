@@ -36,9 +36,7 @@ void main()
 	vector<Point> trajectory;
 	Armor detect;
 
-	Kalman1D kfX(0.5, 5.0, 320, 100);  //   X
-	Kalman1D kfY(0.5, 5.0, 240, 100);  //   Y
-	// q=0.5(目标运动会变化), r=5(检测噪声), 初始猜320, 初始p=100
+
 	while (true)
 	{
 		double start = getTickCount();
@@ -46,25 +44,10 @@ void main()
 		
 		Mat mask = detect.findmycolor(img);
 		vector<Rect>objects = detect.getContours(mask);
-		vector<Rect> smoothobjects = detect.smoothhandle(objects);
-		vector<Point> raw_center = detect.getObjectCenter(objects);   //新加的kalman
-		vector<Point> objectcenter = detect.getObjectCenter(objects); //原来的
+		vector<Rect> AfterSmoothRect = detect.kalmanhandle(objects); //直接kalman滤波
+		vector<Point> raw_center = detect.getObjectCenter(objects);  //用于后面kalman的中心点 
+		vector<Point> objectcenter = detect.getObjectCenter(objects); //没任何滤波的中心点
 
-		kfX.predict();
-		kfY.predict();
-		Point kalman_center;
-		if (!raw_center.empty()) {
-			double zx = raw_center[0].x;
-			double zy = raw_center[0].y;
-
-			kfX.update(zx);
-			kfY.update(zy);
-
-			kalman_center = Point(kfX.state(), kfY.state());
-		}
-		else {
-			kalman_center = Point(kfX.state(), kfY.state());
-		}
 
 
 		if (img.empty())
@@ -85,8 +68,8 @@ void main()
 
 		//画框
 		//显示中心点
-		detect.drawObject(img, smoothobjects, objectcenter, mycolorvalue);
-
+		vector<Point> smooth_center = detect.getObjectCenter(AfterSmoothRect);
+ 		detect.drawObject(img, AfterSmoothRect, smooth_center, mycolorvalue);
 		//计算帧率
 		//fps 平滑 跟跟踪轨迹平滑一样
 		double end = getTickCount();

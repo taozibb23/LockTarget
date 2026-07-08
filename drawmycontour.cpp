@@ -4,6 +4,7 @@
 using namespace cv;
 using namespace std;
 #include"tzbb.h"
+
 void Armor::drawObject(Mat& image, const vector<Rect>& objects, const vector<Point>& objectcneter, const vector<Scalar>& mycolorvalue)
 {
 	for (int i = 0; i < objects.size(); i++)

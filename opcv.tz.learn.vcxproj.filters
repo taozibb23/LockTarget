@@ -24,7 +24,7 @@
     <ClCompile Include="tz_getcontour.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="tz_smoothhandle.cpp">
+    <ClCompile Include="tz_kalmanhandle.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="getobjectcenter.cpp">

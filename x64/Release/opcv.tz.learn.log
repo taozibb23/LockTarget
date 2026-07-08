@@ -1,0 +1,46 @@
+﻿  drawmycontour.cpp
+D:\opencv\opencv460\include\opencv2\imgcodecs.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“drawmycontour.cpp”)
+  
+  getobjectcenter.cpp
+D:\opencv\opencv460\include\opencv2\imgcodecs.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“getobjectcenter.cpp”)
+  
+  main_tz.cpp
+D:\opencv\opencv460\include\opencv2\imgcodecs.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“main_tz.cpp”)
+  
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(20,6): warning C4326: “main”的返回类型应为“int”而非“void”
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(42,16): warning C4244: “初始化”: 从“int64”转换到“double”，可能丢失数据
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(75,14): warning C4244: “初始化”: 从“int64”转换到“double”，可能丢失数据
+  tz_findmycolor.cpp
+D:\opencv\opencv460\include\opencv2\imgcodecs.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“tz_findmycolor.cpp”)
+  
+  tz_getcontour.cpp
+D:\opencv\opencv460\include\opencv2\imgcodecs.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“tz_getcontour.cpp”)
+  
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_getcontour.cpp(14,23): warning C4305: “初始化”: 从“double”到“float”截断
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_getcontour.cpp(15,23): warning C4305: “初始化”: 从“double”到“float”截断
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_getcontour.cpp(25,14): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  tz_kalmanhandle.cpp
+D:\opencv\opencv460\include\opencv2\imgcodecs.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“tz_kalmanhandle.cpp”)
+  
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_kalmanhandle.cpp(45,38): warning C4244: “参数”: 从“double”转换到“_Tp”，可能丢失数据
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_kalmanhandle.cpp(45,38): warning C4244:         with
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_kalmanhandle.cpp(45,38): warning C4244:         [
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_kalmanhandle.cpp(45,38): warning C4244:             _Tp=int
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_kalmanhandle.cpp(45,38): warning C4244:         ]
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_kalmanhandle.cpp(44,41): warning C4244: “参数”: 从“double”转换到“_Tp”，可能丢失数据
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_kalmanhandle.cpp(44,41): warning C4244:         with
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_kalmanhandle.cpp(44,41): warning C4244:         [
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_kalmanhandle.cpp(44,41): warning C4244:             _Tp=int
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\tz_kalmanhandle.cpp(44,41): warning C4244:         ]
+  正在生成代码
+  0 of 366 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  opcv.tz.learn.vcxproj -> E:\visual studio wenjian\opcv.tz.learn\x64\Release\opcv.tz.learn.exe
