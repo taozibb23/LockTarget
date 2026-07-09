@@ -5,8 +5,6 @@
 using namespace cv;
 using namespace std;
 
-
-
 class Kalman1D {
 public:
 	double x; //guess state
@@ -21,7 +19,7 @@ public:
 	}
 
 	void predict() {
-		p += q;
+		p += q;  
 	}
 	void update(double z) {
 		double k = p / (p + r);
@@ -31,6 +29,30 @@ public:
 
 	double state() const { return x; }
 
+};
+
+class PID {
+public:
+	double kp, ki, kd;
+	double integral;
+	double prev_error;
+
+	PID(double p ,double i,double d)
+		:kp(p), ki(i), kd(d), integral(0), prev_error(0) {}
+
+	double calculate(double error, double dt = 1.0) {
+		integral += error * dt;
+		double derivative = (error - prev_error) / dt;
+		double output = kp * error + ki * integral + kd * derivative;
+		prev_error = error;
+		return output;
+
+	}
+
+	void reset() {
+		integral = 0;
+		prev_error = 0;
+	}
 
 };
 

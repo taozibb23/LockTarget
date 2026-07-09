@@ -1,5 +1,6 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
+#include <windows.h>
 
 using namespace cv;
 using namespace std;
@@ -33,42 +34,53 @@ void main()
 		cout << "camera open failed" << endl;
 		return;
 	}
-	vector<Point> trajectory;
+	vector<Point> trajectory; //中心点连线
+	vector<double> trajectoryTimes;// 储存时间的参数
 	Armor detect;
-
+	PID pid_x(0.3, 0.0, 0.0);
+	PID pid_y(0.3, 0.0, 0.0);
 
 	while (true)
 	{
 		double start = getTickCount();
 		cap.read(img);
 		
-		Mat mask = detect.findmycolor(img);
-		vector<Rect>objects = detect.getContours(mask);
+		Mat mask = detect.findmycolor(img);//筛选颜色
+		vector<Rect>objects = detect.getContours(mask); //变换成mask
 		vector<Rect> AfterSmoothRect = detect.kalmanhandle(objects); //直接kalman滤波
-		vector<Point> raw_center = detect.getObjectCenter(objects);  //用于后面kalman的中心点 
+		vector<Point> raw_center = detect.getObjectCenter(objects);  //用于后面kalman的点  ，在函数里面计算
 		vector<Point> objectcenter = detect.getObjectCenter(objects); //没任何滤波的中心点
-
-
-
+		vector<Point> smooth_center = detect.getObjectCenter(AfterSmoothRect); //用于画框的中心点，kalman处理过的计算中心点
+		
 		if (img.empty())
 		{
 			cout << "img is empty" << endl;
 			break;
 		}
 
-		if (!objectcenter.empty())
+		double now = getTickCount() / getTickFrequency(); //当前时间(秒)
+		double start_sec = start / getTickFrequency(); //记录时间戳
+		if (!smooth_center.empty())
 		{
-			trajectory.push_back(objectcenter[0]);
-			for (int i = 1; i < trajectory.size(); i++)
-			{
-				line(img, trajectory[i - 1], trajectory[i], Scalar(0, 255, 0), 2);
-			}
+			trajectory.push_back(smooth_center[0]);
+			trajectoryTimes.push_back(start_sec);//储存的是秒
 		}
+		while (!trajectoryTimes.empty() && now - trajectoryTimes[0] > 1.0) 
+		{
+			trajectory.erase(trajectory.begin());
+			trajectoryTimes.erase(trajectoryTimes.begin());
+
+		}
+		for (int i = 1; i < trajectory.size(); i++)
+		{
+			line(img, trajectory[i - 1], trajectory[i], Scalar(0, 255, 0), 2,LINE_AA);
+		}
+		
 		//识别红色方块
 
 		//画框
 		//显示中心点
-		vector<Point> smooth_center = detect.getObjectCenter(AfterSmoothRect);
+		
  		detect.drawObject(img, AfterSmoothRect, smooth_center, mycolorvalue);
 		//计算帧率
 		//fps 平滑 跟跟踪轨迹平滑一样
