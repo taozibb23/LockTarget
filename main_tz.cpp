@@ -1,6 +1,6 @@
+#include <windows.h>
 #include <opencv2/opencv.hpp>
 #include <iostream>
-#include <windows.h>
 
 using namespace cv;
 using namespace std;
@@ -20,15 +20,15 @@ Mat img;
 
 void main()
 {
-	VideoCapture cap(0);
+	VideoCapture cap(1);
 	
-	namedWindow("TrackBars", (640, 200));
-	createTrackbar("Hue Min", "TrackBars", &colorvalue.hmin, 179);
-	createTrackbar("Hue Max", "TrackBars", &colorvalue.hmax, 179);
-	createTrackbar("Sat Min", "TrackBars", &colorvalue.smin, 255);
-	createTrackbar("Sat Max", "TrackBars", &colorvalue.smax, 255);
-	createTrackbar("Val Min", "TrackBars", &colorvalue.vmin, 255);
-	createTrackbar("Val Max", "TrackBars", &colorvalue.vmax, 255);
+	//namedWindow("TrackBars", (640, 200));//调节trackbar调试找颜色的时候用其他时候不用
+	//createTrackbar("Hue Min", "TrackBars", &colorvalue.hmin, 179);
+	//createTrackbar("Hue Max", "TrackBars", &colorvalue.hmax, 179);
+	//createTrackbar("Sat Min", "TrackBars", &colorvalue.smin, 255);
+	//createTrackbar("Sat Max", "TrackBars", &colorvalue.smax, 255);
+	//createTrackbar("Val Min", "TrackBars", &colorvalue.vmin, 255);
+	//createTrackbar("Val Max", "TrackBars", &colorvalue.vmax, 255);
 	if (!cap.isOpened())
 	{
 		cout << "camera open failed" << endl;
@@ -58,6 +58,48 @@ void main()
 			break;
 		}
 
+		if (!smooth_center.empty())
+		{
+			POINT cursor;
+			GetCursorPos(&cursor);
+
+			double targetX = smooth_center[0].x;
+			double targetY = smooth_center[0].y;
+			
+			SetCursorPos((int)targetX, (int)targetY);
+			
+		
+		}
+
+		//if (!smooth_center.empty())
+		//{
+		//	POINT cursor;
+		//	GetCursorPos(&cursor);
+
+		//	int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+		//	int screenHeight = GetSystemMetrics(SM_CYSCREEN);
+
+		//	double scaleX = (double)screenWidth / img.cols;
+		//	double scaleY = (double)screenHeight / img.rows;//计算缩放比例，为了应对不同分辨率的屏幕
+
+		//	double targetX = smooth_center[0].x * scaleX;
+		//	double targetY = smooth_center[0].y * scaleY;
+		//	//PID对应的error  用于后面计算
+		//	double errorX = targetX - cursor.x;
+		//	double errorY = targetY - cursor.y;
+		//	//知道了error就可以计算输出
+		//	double moveX = pid_x.calculate(errorX);
+		//	double moveY = pid_y.calculate(errorY);
+		//	//-------------------------------------------
+		//	double maxMove = 40.0;//最大移动像素,限制
+		//	moveX = max(-maxMove, min(maxMove, moveX));//min作为clamp
+		//	moveY = max(-maxMove, min(maxMove, moveY));
+		//	//限幅
+		//	//————————————————————————————————
+		//	mouse_event(MOUSEEVENTF_MOVE, (int)moveX, (int)moveY, 0, 0);
+
+		//	cout << "target :" << targetX << ",'" << targetY << "  |  " << "cursor :" << cursor.x << "," << cursor.y << "  |  " << "error :" << errorX << "," << errorY << "  |  " << "move :" << moveX << "," << moveY << endl;
+		//}
 		double now = getTickCount() / getTickFrequency(); //当前时间(秒)
 		double start_sec = start / getTickFrequency(); //记录时间戳
 		if (!smooth_center.empty())

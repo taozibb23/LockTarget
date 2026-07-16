@@ -127,12 +127,13 @@
     <ClCompile Include="drawmycontour.cpp" />
     <ClCompile Include="getobjectcenter.cpp" />
     <ClCompile Include="main_tz.cpp" />
-    <ClCompile Include="tz_captureScreen.cpp" />
+    <ClCompile Include="tz_screencaptureDX.cpp" />
     <ClCompile Include="tz_findmycolor.cpp" />
     <ClCompile Include="tz_getcontour.cpp" />
     <ClCompile Include="tz_kalmanhandle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ScreenCaptureDX.h" />
     <ClInclude Include="tzbb.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

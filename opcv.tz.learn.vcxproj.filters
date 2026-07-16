@@ -33,12 +33,15 @@
     <ClCompile Include="drawmycontour.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="tz_captureScreen.cpp">
+    <ClCompile Include="tz_screencaptureDX.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tzbb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenCaptureDX.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

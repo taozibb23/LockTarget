@@ -85,6 +85,8 @@ public:
 	int hmin , smin , vmin ;
 	int hmax , smax , vmax ;
 
+	int bluehmin, bluesmin, bluevmin;
+	int bluehmax, bluesmax, bluevmax;
 	ColorValue()
 	{
 		hmin = 0;
@@ -93,6 +95,13 @@ public:
 		hmax = 179;
 		smax = 255;
 		vmax = 255;
+
+		bluehmin = 85;
+		bluesmin = 184;
+		bluevmin = 132;
+		bluehmax = 95;
+		bluesmax = 246;
+		bluevmax = 255;
 	}
 };
 
