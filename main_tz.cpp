@@ -47,13 +47,68 @@ void main()
 	{
 		double start = getTickCount();
 		cap.read(img);
-		
+		//---------------------------------------------------------------------
 		Mat mask = detect.findmycolor(img);//筛选颜色
 		vector<Rect>objects = detect.getContours(mask); //变换成mask
-		Rect SelectRect;
+		vector<Rect> smooth_Rect = detect.kalmanhandle(objects); //直接kalman滤波,处理出来的是矩形
+		vector<Point> raw_center = detect.getObjectCenter(objects);  //第一次原始的中心点
+		vector<Point> smooth_center = detect.getObjectCenter(objects); //没任何滤波的中心点
+		vector<Point> objectcenter = detect.getObjectCenter(smooth_Rect); //用于画框的中心点，kalman处理过的计算中心点
+		//------------------------------------------------------------------------
+		//if (!smooth_center.empty())
+		//{
+		//	POINT cursor;
+		//	GetCursorPos(&cursor);
+
+		//	double targetX = smooth_center[0].x;
+		//	double targetY = smooth_center[0].y;
+		//	
+		//	SetCursorPos((int)targetX, (int)targetY);
+		//	
+		//
+		//}
+		/*Rect SelectRect;
 		int bestIdx = -1;
 		if (!objects.empty())
 		{
+			Point ScreenCenter(img.cols / 2, img.rows / 2);
+			double minDist = 9991314520;
+			for (int i = 0; i < objects.size(); i++)
+			{
+				Point objCenter(objects[i].x + objects[i].width / 2, objects[i].y + objects[i].height / 2);
+				double Dist = (ScreenCenter.x - objCenter.x) * (ScreenCenter.x - objCenter.x) + (ScreenCenter.y - objCenter.y) * (ScreenCenter.y - objCenter.y);
+
+				if (Dist < minDist)
+				{
+					minDist = Dist;
+					bestIdx = i;
+				}
+			}
+		}*/
+		
+		//if (bestIdx >= 0) {
+		//	vector<Rect> selected;
+		//	selected.push_back(objects[bestIdx]);
+		//	objects = selected;
+		//}
+		
+
+
+		if (!smooth_Rect.empty() || smooth_center.empty())
+		{
+
+			cout << "smoorh_rect and smooth_center error" << endl;
+			break;
+		
+		
+			//--------------------------------------
+			POINT cursor;
+			GetCursorPos(&cursor);
+			double targetX = smooth_center[]
+
+			Rect SelectRect;
+		    int bestIdx = -1;
+		
 			Point ScreenCenter(img.cols / 2, img.rows / 2);
 			double minDist = 9991314520;
 			for (int i = 0; i < objects.size(); i++)
@@ -67,48 +122,31 @@ void main()
 					bestIdx = i;
 				}
 			}
-		}
-		vector<Rect> AfterSmooth_Rect;
-		vector<Point> raw_center;
-		vector<Point> objectcenter;
-		vector<Point> smooth_center;
 		
-		if (bestIdx >= 0){
+		    vector<Rect> AfterSmooth_Rect;
+		    vector<Point> raw_center;
+		    vector<Point> objectcenter;
+		    vector<Point> smooth_center;
+		
+		  if (bestIdx >= 0){
 			vector<Rect> selected;
 			selected.push_back(objects[bestIdx]);
 			objects = selected;
-		}
-		AfterSmooth_Rect = detect.kalmanhandle(objects); //直接kalman滤波,处理出来的是矩形
-		raw_center = detect.getObjectCenter(objects);  //第一次原始的中心点
-		objectcenter = detect.getObjectCenter(objects); //没任何滤波的中心点
-		smooth_center = detect.getObjectCenter(AfterSmooth_Rect); //用于画框的中心点，kalman处理过的计算中心点
+	     	}
+	         	AfterSmooth_Rect = detect.kalmanhandle(objects); //直接kalman滤波,处理出来的是矩形
+	         	raw_center = detect.getObjectCenter(objects);  //第一次原始的中心点
+	         	objectcenter = detect.getObjectCenter(objects); //没任何滤波的中心点
+				smooth_center = detect.getObjectCenter(AfterSmooth_Rect); //用于画框的中心点，kalman处理过的计算中心点
 		
 
-		if (img.empty())
-		{
-			cout << "img is empty" << endl;
-			break;
-		}
-
-		//if (!smooth_center.empty())
-		//{
-		//	POINT cursor;
-		//	GetCursorPos(&cursor);
-
-		//	double targetX = smooth_center[0].x;
-		//	double targetY = smooth_center[0].y;
-		//	
-		//	SetCursorPos((int)targetX, (int)targetY);
-		//	
-		//
-		//}
-
-		if (!smooth_center.empty())
-		{
-
-			POINT cursor;
-			GetCursorPos(&cursor);
-			
+			if (img.empty())
+			{
+				cout << "img is empty" << endl;
+				break;
+			}
+				POINT cursor;
+				GetCursorPos(&cursor);
+			//坐标映射
 			int screenWidth = GetSystemMetrics(SM_CXSCREEN);
 			int screenHeight = GetSystemMetrics(SM_CYSCREEN);
 
@@ -123,8 +161,8 @@ void main()
 			double targetX = smooth_center[0].x * scaleX;
 			double targetY = smooth_center[0].y * scaleY;
 			//PID对应的error  用于后面计算
-			double errorX = targetX - cursorImgX;
-			double errorY = targetY - cursorImgY;
+			double errorX = targetX - cursor.x;
+			double errorY = targetY - cursor.y;
 
 			bool atEdge = (cursor.x <= 20 || cursor.x >= screenWidth - 20 || cursor.y <= 20 || cursor.y >= screenHeight - 20);
 
@@ -192,13 +230,15 @@ void main()
 		{
 			line(img, trajectory[i - 1], trajectory[i], Scalar(0, 255, 0), 2,LINE_AA);
 		}
-		
-		
-
+		//-------------------测试映射（用中心点十字架）-------------------
+		Point center_test(img.cols,img.rows);
+		line(img, Point(center_test.x - 20, center_test.y), Point(center_test.x + 20, center_test.y), Scalar(0, 255, 0), 1);
+		line(img, Point(center_test.x, center_test.y - 20), Point(center_test.x, center_test.y + 20), Scalar(0, 255, 0), 1);
+		//-------------------测试映射（中心点十字架）
 		//画框
 		//显示中心点
 		
- 		detect.drawObject(img, AfterSmooth_Rect, smooth_center, mycolorvalue);
+ 		detect.drawObject(img, smooth_Rect, smooth_center, mycolorvalue);
 		//计算帧率
 		//fps 平滑 跟跟踪轨迹平滑一样
 		double end = getTickCount();
