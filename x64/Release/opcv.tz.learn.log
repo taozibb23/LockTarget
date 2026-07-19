@@ -3,23 +3,23 @@ D:\opencv\opencv460\include\opencv2\imgcodecs.hpp(1,1): warning C4819: 该文件
   (编译源文件“main_tz.cpp”)
   
 E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(23,6): warning C4326: “main”的返回类型应为“int”而非“void”
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(48,16): warning C4244: “初始化”: 从“int64”转换到“double”，可能丢失数据
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(121,31): warning C4244: “参数”: 从“double”转换到“_Tp”，可能丢失数据
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(121,31): warning C4244:         with
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(121,31): warning C4244:         [
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(121,31): warning C4244:             _Tp=int
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(121,31): warning C4244:         ]
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(121,19): warning C4244: “参数”: 从“double”转换到“_Tp”，可能丢失数据
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(121,19): warning C4244:         with
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(121,19): warning C4244:         [
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(121,19): warning C4244:             _Tp=int
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(121,19): warning C4244:         ]
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(136,27): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(136,18): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(206,14): warning C4244: “初始化”: 从“int64”转换到“double”，可能丢失数据
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(52,16): warning C4244: “初始化”: 从“int64”转换到“double”，可能丢失数据
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(103,31): warning C4244: “参数”: 从“double”转换到“_Tp”，可能丢失数据
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(103,31): warning C4244:         with
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(103,31): warning C4244:         [
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(103,31): warning C4244:             _Tp=int
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(103,31): warning C4244:         ]
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(103,19): warning C4244: “参数”: 从“double”转换到“_Tp”，可能丢失数据
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(103,19): warning C4244:         with
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(103,19): warning C4244:         [
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(103,19): warning C4244:             _Tp=int
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(103,19): warning C4244:         ]
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(118,27): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(118,18): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+E:\visual studio wenjian\opcv.tz.learn\opcv.tz.learn\main_tz.cpp(228,14): warning C4244: “初始化”: 从“int64”转换到“double”，可能丢失数据
   正在生成代码
-  455 of 470 functions (96.8%) were compiled, the rest were copied from previous compilation.
-    221 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  41 of 448 functions ( 9.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    44 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   opcv.tz.learn.vcxproj -> E:\visual studio wenjian\opcv.tz.learn\x64\Release\opcv.tz.learn.exe
