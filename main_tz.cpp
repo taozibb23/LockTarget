@@ -180,7 +180,7 @@ void main()
 		   //打印log
 		 
 
-         // ------------------------------控制鼠标点击--------------------------
+         // ------------------------------控制鼠标点击------------------------
 			double distance = sqrt(errorX * errorX + errorY * errorY);
 			int click_threshold = 5;
 			double aim_distance = 10.0;
