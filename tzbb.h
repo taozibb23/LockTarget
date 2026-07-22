@@ -106,6 +106,7 @@ public:
 };
 
 
+
 //
 //class Kalmanvalue {
 //
@@ -130,3 +131,12 @@ public:
 //	}
 //
 //};
+
+
+class Locktarget
+{
+public:
+	int claculatebestIdx(vector<Point>& smooth_center, int& lockedIdx, double cursorImgX, double cursorImgY);
+	void calculatemove(Mat& img, double targetX, double targetY, POINT cursor, PID& pid_x, PID& pid_y, int& stableCount);
+
+};

@@ -124,17 +124,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="drawmycontour.cpp" />
-    <ClCompile Include="getobjectcenter.cpp" />
+    <ClCompile Include="display_tz.cpp" />
     <ClCompile Include="main_tz.cpp" />
-    <ClCompile Include="tz_screencaptureDX.cpp" />
-    <ClCompile Include="tz_findmycolor.cpp" />
-    <ClCompile Include="tz_getcontour.cpp" />
-    <ClCompile Include="tz_kalmanhandle.cpp" />
+    <ClCompile Include="Armor_tz.cpp" />
+    <ClCompile Include="lock_tz.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ScreenCaptureDX.h" />
     <ClInclude Include="tzbb.h" />
+    <ClInclude Include="display.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
