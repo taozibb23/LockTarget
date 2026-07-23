@@ -1,4 +1,4 @@
-# LockTarget - Visyal Aim assist for AimLabs
+# LockTarget - Visyal Aim assist for AimLabs   [中文版说明](README_CN.md)
 An automatic aiming assistant that detects blue targets in real time, tracks them with Kalman filter,and moves the mouse using PID control.
 --------------------
 ## Features
@@ -32,8 +32,6 @@ An automatic aiming assistant that detects blue targets in real time, tracks the
 ├── display.h             # Display class declarartion
 ├── test_coord.cpp        # cursor mapping test file (excluded from compilation)
 └── README.md / README_EN.md
-
-[中文版说明](README_CN.md)
 
 ```bash
 git clone https://github.com/taozibb23/LockTarget.git
