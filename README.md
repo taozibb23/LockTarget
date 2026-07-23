@@ -33,6 +33,8 @@ An automatic aiming assistant that detects blue targets in real time, tracks the
 ├── test_coord.cpp        # cursor mapping test file (excluded from compilation)
 └── README.md / README_EN.md
 
+[中文版说明](README_CN.md)
+
 ```bash
 git clone https://github.com/taozibb23/LockTarget.git
 cd LockTarget
